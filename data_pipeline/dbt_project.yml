@@ -37,3 +37,5 @@ models:
     marts:
       +materialized: table
       +snowflake_warehouse: dbt_wh
+flags:
+  require_generic_test_arguments_property: true
