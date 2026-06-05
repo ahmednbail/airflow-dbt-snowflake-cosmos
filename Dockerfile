@@ -5,6 +5,5 @@ RUN pip install --no-cache-dir uv
 COPY dbt-requirements.txt .
 
 RUN uv venv dbt_venv && \
-    . dbt_venv/bin/activate && \
-    uv pip install --no-cache-dir -r dbt-requirements.txt
+    uv pip install --no-cache-dir --python dbt_venv/bin/python -r dbt-requirements.txt
 
