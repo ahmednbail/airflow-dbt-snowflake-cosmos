@@ -16,6 +16,7 @@ schema = "DBT_SCHEMA"
 
 profile_config = ProfileConfig(
     profile_name="airflow",
+    target_name="dev",
     profile_mapping=SnowflakeUserPasswordProfileMapping(
         conn_id=conn_id,
         profile_args={
@@ -28,10 +29,10 @@ profile_config = ProfileConfig(
 )
 
 dbt_snowflake= DbtDag(
-    project_config= ProjectConfig('/usr/local/airflow/data_pipeline'),
+    project_config=ProjectConfig('/usr/local/airflow/data_pipeline'),
     operator_args={'install_deps':True},
     profile_config=profile_config,
-    execution_config=ExecutionConfig(dbt_executable_path='/usr/local/airflow/dbt_venv/bin/dbt',dbt_project_dir='/usr/local/airflow/data_pipeline'),
+    execution_config=ExecutionConfig(dbt_executable_path='/usr/local/airflow/dbt_venv/bin/dbt'),
     schedule=None,
     start_date=datetime(2026, 6, 4),
     catchup=False,
